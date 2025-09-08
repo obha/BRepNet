@@ -4,7 +4,7 @@ channels:
   - defaults
   - lambouj
 dependencies:
-  - python=3.7
+  - python=3.9
   - pythonocc-core=7.5.1
   - pytorch=1.7.1
   - tqdm=4.64.0
