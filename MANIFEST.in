@@ -1,0 +1,6 @@
+recursive-include brepnet/feature_lists *.json
+recursive-include brepnet/kernels *.json
+recursive-include brepnet/example_files *
+recursive-include brepnet/docs *
+include brepnet/README.md
+include brepnet/LICENSE
