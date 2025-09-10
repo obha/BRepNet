@@ -153,8 +153,11 @@ def evaluate_folder(
         step_folder, 
         feature_standardization, 
         model=None, 
+        kernel=None,
         input_features=None, 
-        extra_args=None
+        segment_names=None,
+        num_workers=None,
+        extra_args=None,
     ):
     # We need to set up all the default brepnet arguments.  The easiest
     # way to do it is to use the same argument parser
@@ -162,8 +165,27 @@ def evaluate_folder(
     args_to_parse = [
         "--dataset_dir", str(step_folder),
         "--dataset_file", str(feature_standardization),
-        "--segment_names", "example_files/pretrained_models/segment_names.json"
+        # "--segment_names", "example_files/pretrained_models/segment_names.json"
     ]
+    if segment_names is  None:
+        args_to_parse.extend(
+            [ "--segment_names", "example_files/pretrained_models/segment_names.json" ]
+        )
+    else:
+        args_to_parse.extend(
+            [ "--segment_names", str(segment_names) ]
+        )
+
+    if num_workers is not None:
+        args_to_parse.extend(
+            [ "--num_workers", str(num_workers) ]
+        )
+        
+    if kernel is not None:
+        args_to_parse.extend(
+            [ "--kernel", str(kernel) ]
+        )
+        
     if model is None:
         print("Warning! No pretrained model given.  Using random network!")
     else:
